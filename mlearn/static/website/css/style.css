@@ -1,0 +1,33 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #272B37;
+    align-content: center;
+    align-items: center;
+    margin: 0pt;
+}
+
+div {
+}
+
+@media (min-width: 768px)
+{
+    .container{
+        width: 750pt;
+    }
+
+}
+
+header {
+    height: 20pt;
+    padding: 10pt;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+}
+
+button.menu {
+    background: none;
+}
+
+section {
+    height: 300pt;
+}

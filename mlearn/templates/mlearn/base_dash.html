@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Cyborg{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'mlearn/../../mlearn/static/css/style.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{% static 'mlearn/static/js/main.js' %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- Header -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'mlearn:dashboard' %}">Cyborg</a>
+        </div>
+
+        <!-- Items -->
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav">
+                <li class="{% block datasets_active %}{% endblock %}">
+                    <a href="{% url 'mlearn:dashboard' %}"></a>
+                </li>
+            </ul>
+
+            {% block logstatus %}
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{% url 'mlearn:logout' %}">
+                        Logout
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'mlearn:profile' %}">
+                        {{ username }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'mlearn:profile' %}">
+                        <img src="static/profile_pic.jpg" style="border-radius: 50%; width: 40px; height: 40px;">
+                    </a>
+                </li>
+            </ul>
+            {% endblock %}
+        </div>
+
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>

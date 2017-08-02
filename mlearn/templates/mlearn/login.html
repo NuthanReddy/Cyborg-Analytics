@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Cyborg{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'mlearn/../../mlearn/static/css/style.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{% static 'mlearn/../../mlearn/static/js/main.js' %}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div>
+            <h2 style="align-content: center; font-family: 'Satisfy', cursive; -webkit-align-content: center;">Cyborg</h2>
+            <div class="panel panel-default" style="max-width: 400px; height: inherit">
+                <div class="panel-body">
+                    <h4>Log In</h4>
+                    <hr>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-vertical" role="form" action="{% url 'mlearn:login'%}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_username">Username:</label>
+                            <input type="text" class="form-control" id="id_username" placeholder="Enter username" maxlength="30">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_password">Password:</label>
+                            <input type="password" class="form-control" id="id_password" placeholder="Enter password" minlength="5">
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox"> Remember me</label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    Don't have an account? <a href="{% url 'mlearn:register' %}">Click here</a> to register.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

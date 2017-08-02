@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Cyborg{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href='/favicon.ico'/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href='/website/static/static/mlearn/style.css'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src='/website/js/main.js'></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- Header -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'mlearn:index' %}" target="_blank">Cyborg</a>
+        </div>
+
+        <!-- Items -->
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#aboutus">About Us</a>
+                </li>
+                <li>
+                    <a href="#product">Product</a>
+                </li>
+                <li>
+                    <a href="#usecases">Use Cases</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact Us</a>
+                </li>
+            </ul>
+            {% if user == 'None' %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{% url 'mlearn:login' %}" target="_blank">Log In</a>
+                    </li>
+                    <li>
+    {#                    <button type="button" class="btn btn-info" value="Submit Button">Sign Up</button>#}
+                        <a href="{% url 'mlearn:register' %}" target="_blank">Sign Up</a>
+                    </li>
+                </ul>
+            {% endif %}
+            {% if user != 'None' %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{% url 'mlearn:dashboard' %}" target="_blank">{{ user }}</a>
+                    </li>
+                    <li>
+    {#                    <button type="button" class="btn btn-info" value="Submit Button">Sign Up</button>#}
+                        <a href="{% url 'mlearn:logout' %}" target="_blank">Logout</a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>
